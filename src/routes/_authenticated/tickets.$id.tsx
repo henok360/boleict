@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import type { Database } from "@/integrations/supabase/types";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { fetchTeamLeaderIds, logEvent, notify } from "@/lib/tickets";
 import {
@@ -89,7 +90,11 @@ function TicketDetail() {
     queryClient.invalidateQueries({ queryKey: ["tickets"] });
   }
 
-  async function update(patch: Record<string, unknown>, log: string, recipients: (string | null)[]) {
+  async function update(
+    patch: Database["public"]["Tables"]["tickets"]["Update"],
+    log: string,
+    recipients: (string | null)[],
+  ) {
     setError(null);
     const { error: updateError } = await supabase.from("tickets").update(patch).eq("id", id);
     if (updateError) {
