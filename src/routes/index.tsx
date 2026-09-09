@@ -32,8 +32,9 @@ function Home() {
               BSC
             </span>
             <div>
-              <p className="font-display text-base font-semibold leading-tight">Bole Sub City</p>
-              <p className="text-xs opacity-80">IT Support Management System</p>
+              <p className="font-display text-base font-semibold leading-tight">ቦሌ ክፍለ ከተማ አስተዳደር</p>
+              <p className="text-xs opacity-80">Work Flow Management System</p>
+
             </div>
           </div>
           <Link to="/auth">
@@ -47,12 +48,12 @@ function Home() {
       <section className="border-b border-border bg-secondary">
         <div className="mx-auto max-w-6xl px-4 py-14">
           <h1 className="max-w-2xl font-display text-3xl font-bold text-foreground sm:text-4xl">
-            One support desk for every Bole Sub City office
+            የአገልግሎት መከታተያ ሲስተም
           </h1>
           <p className="mt-3 max-w-2xl text-muted-foreground">
-            Report a computer, network or system problem, follow it through review, assignment and repair,
-            and confirm the work when your office is back up and running.
+            End-to-End Incident Resolution and Service Continuity Management&nbsp;
           </p>
+
           <div className="mt-6 flex gap-3">
             <Link to="/auth">
               <Button>Submit a request</Button>
