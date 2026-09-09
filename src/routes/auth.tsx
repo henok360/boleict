@@ -93,9 +93,11 @@ function AuthPage() {
     <div className="min-h-screen bg-background">
       <header className="bg-surface-header px-4 py-4 text-primary-foreground">
         <div className="mx-auto flex max-w-6xl items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-md bg-accent font-display text-sm font-bold text-accent-foreground">
-            BSC
-          </span>
+          <img
+            src={logoAsset.url}
+            alt="Bole Sub City Administration logo"
+            className="h-10 w-10 rounded-full bg-white object-cover shadow-sm ring-2 ring-accent/60"
+          />
           <div>
             <p className="font-display text-base font-semibold leading-tight">Bole Sub City</p>
             <p className="text-xs opacity-80">IT Support Management System</p>
