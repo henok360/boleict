@@ -4,6 +4,7 @@ import { useEffect, type ReactNode } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useCurrentUser, ROLE_LABELS } from "@/hooks/useCurrentUser";
 import { Button } from "@/components/ui-kit";
+import logoAsset from "@/assets/bole-logo.png.asset.json";
 import { cn } from "@/lib/utils";
 
 export function AppShell({ children }: { children: ReactNode }) {
