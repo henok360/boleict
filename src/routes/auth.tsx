@@ -102,8 +102,8 @@ function AuthPage() {
       </header>
 
       <div className="mx-auto max-w-md px-4 py-6">
-        <Card>
-          <div className="mb-5 flex rounded-md bg-muted p-1">
+        <Card className="p-4">
+          <div className="mb-4 flex rounded-md bg-muted p-1">
             {(["signin", "signup"] as const).map((m) => (
               <button
                 key={m}
@@ -111,7 +111,7 @@ function AuthPage() {
                   setMode(m);
                   setError(null);
                 }}
-                className={`flex-1 rounded px-3 py-2 text-sm font-medium ${
+                className={`flex-1 rounded px-3 py-1.5 text-sm font-medium ${
                   mode === m ? "bg-card text-foreground shadow-sm" : "text-muted-foreground"
                 }`}
               >
@@ -121,13 +121,13 @@ function AuthPage() {
           </div>
 
           {error ? (
-            <div className="mb-4">
+            <div className="mb-3">
               <Alert>{error}</Alert>
             </div>
           ) : null}
 
           {mode === "signin" ? (
-            <form onSubmit={signIn} className="space-y-4">
+            <form onSubmit={signIn} className="space-y-3">
               <div>
                 <Label htmlFor="u">Username</Label>
                 <Input id="u" value={form.username} onChange={set("username")} required autoComplete="username" />
