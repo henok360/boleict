@@ -80,8 +80,8 @@ function TicketDetail() {
 
   if (!ticket || !me) return <p className="text-sm text-muted-foreground">Loading request...</p>;
 
-  const isOwner = ticket.created_by === me.id;
-  const isAssignee = ticket.assigned_to === me.id;
+  const isOwner = ticket!.created_by === me!.id;
+  const isAssignee = ticket!.assigned_to === me!.id;
   const isLeader = me.role === "team_leader" || me.role === "super_admin";
 
   async function refreshAll() {
@@ -114,24 +114,24 @@ function TicketDetail() {
     await update(
       {
         assigned_to: engineerId,
-        assigned_by: me.id,
+        assigned_by: me!.id,
         assigned_at: new Date().toISOString(),
         status: "assigned",
       },
       `Assigned to ${nameOf(engineerId)} by the team leader.`,
-      [engineerId, ticket.created_by],
+      [engineerId, ticket!.created_by],
     );
   }
 
   async function postComment(e: React.FormEvent) {
     e.preventDefault();
     if (!comment.trim()) return;
-    await logEvent(id, me.id, comment.trim(), "comment");
+    await logEvent(id, me!.id, comment.trim(), "comment");
     const leaders = await fetchTeamLeaderIds();
     await notify(
-      [...new Set([ticket.created_by, ticket.assigned_to, ...leaders].filter((u) => u && u !== me.id))],
+      [...new Set([ticket!.created_by, ticket!.assigned_to, ...leaders].filter((u) => u && u !== me!.id))],
       id,
-      `${ticket.reference}: new update from ${me.profile?.full_name}.`,
+      `${ticket!.reference}: new update from ${me!.profile?.full_name}.`,
     );
     setComment("");
     await refreshAll();
@@ -148,10 +148,10 @@ function TicketDetail() {
       <Card>
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
-            <p className="font-mono text-xs text-muted-foreground">{ticket.reference}</p>
+            <p className="font-mono text-xs text-muted-foreground">{ticket!.reference}</p>
             <h1 className="font-display text-2xl font-bold">{ticket.title}</h1>
             <p className="mt-1 text-sm text-muted-foreground">
-              Raised by {nameOf(ticket.created_by)} on {new Date(ticket.created_at).toLocaleString()}
+              Raised by {nameOf(ticket!.created_by)} on {new Date(ticket.created_at).toLocaleString()}
             </p>
           </div>
           <div className="flex gap-2">
@@ -171,7 +171,7 @@ function TicketDetail() {
           </div>
           <div>
             <dt className="text-xs uppercase text-muted-foreground">Engineer</dt>
-            <dd>{nameOf(ticket.assigned_to)}</dd>
+            <dd>{nameOf(ticket!.assigned_to)}</dd>
           </div>
           <div>
             <dt className="text-xs uppercase text-muted-foreground">Assigned by</dt>
@@ -198,12 +198,12 @@ function TicketDetail() {
                   ))}
                 </Select>
               </div>
-              <Button onClick={assign}>{ticket.assigned_to ? "Reassign" : "Assign"}</Button>
+              <Button onClick={assign}>{ticket!.assigned_to ? "Reassign" : "Assign"}</Button>
               {ticket.status === "submitted" ? (
                 <Button
                   variant="outline"
                   onClick={() =>
-                    update({ status: "rejected" }, "Request rejected by the team leader.", [ticket.created_by])
+                    update({ status: "rejected" }, "Request rejected by the team leader.", [ticket!.created_by])
                   }
                 >
                   Reject
@@ -217,8 +217,8 @@ function TicketDetail() {
               onClick={async () =>
                 update(
                   { status: "accepted" },
-                  `Assignment accepted by ${me.profile?.full_name}.`,
-                  [ticket.created_by, ...(await leaderIdsPromise())],
+                  `Assignment accepted by ${me!.profile?.full_name}.`,
+                  [ticket!.created_by, ...(await leaderIdsPromise())],
                 )
               }
             >
@@ -230,7 +230,7 @@ function TicketDetail() {
             <Button
               onClick={async () =>
                 update({ status: "in_progress" }, "Work started on this request.", [
-                  ticket.created_by,
+                  ticket!.created_by,
                   ...(await leaderIdsPromise()),
                 ])
               }
@@ -246,7 +246,7 @@ function TicketDetail() {
                 update(
                   { status: "completed", completed_at: new Date().toISOString() },
                   "Engineer marked the work as completed. Awaiting user confirmation.",
-                  [ticket.created_by, ...(await leaderIdsPromise())],
+                  [ticket!.created_by, ...(await leaderIdsPromise())],
                 )
               }
             >
@@ -261,7 +261,7 @@ function TicketDetail() {
                   update(
                     { status: "confirmed", confirmed_at: new Date().toISOString() },
                     "User confirmed the work is complete. Ready for team leader closure.",
-                    [ticket.assigned_to, ...(await leaderIdsPromise())],
+                    [ticket!.assigned_to, ...(await leaderIdsPromise())],
                   )
                 }
               >
@@ -271,7 +271,7 @@ function TicketDetail() {
                 variant="outline"
                 onClick={async () =>
                   update({ status: "in_progress" }, "User reported the issue is not yet resolved.", [
-                    ticket.assigned_to,
+                    ticket!.assigned_to,
                     ...(await leaderIdsPromise()),
                   ])
                 }
@@ -285,8 +285,8 @@ function TicketDetail() {
             <Button
               onClick={() =>
                 update({ status: "closed", closed_at: new Date().toISOString() }, "Ticket closed by the team leader.", [
-                  ticket.created_by,
-                  ticket.assigned_to,
+                  ticket!.created_by,
+                  ticket!.assigned_to,
                 ])
               }
             >
