@@ -137,7 +137,8 @@ function Home() {
             Official service desk · Information Technology Directorate
           </p>
           <h1 className="mt-5 max-w-3xl font-display text-4xl font-bold leading-tight sm:text-5xl">
-            የአገልግሎት መከታተያ ሲስተም
+             የኢንፎርሜሽን ቴክኖሎጂ
+             አገልግሎት መከታተያ ሲስተም
           </h1>
           <p className="mt-4 max-w-2xl text-base opacity-85 sm:text-lg">
             End-to-End Incident Resolution and Service Continuity Management — one accountable
