@@ -4,7 +4,7 @@ import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { getSignupOptions, signUpAccount, USERNAME_DOMAIN, type SignupRole } from "@/lib/auth.functions";
 import { Alert, Button, Card, Input, Label, Select } from "@/components/ui-kit";
-import logoAsset from "@/assets/bole-logo.png.asset.json";
+
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
