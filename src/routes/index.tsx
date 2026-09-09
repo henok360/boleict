@@ -135,8 +135,12 @@ function Home() {
           }}
         />
         <div className="relative mx-auto max-w-6xl px-4 py-20 sm:py-24">
-          <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs font-medium tracking-wide">
-            <Building2 className="h-3.5 w-3.5 text-accent" />
+          <img
+            src={logoAsset.url}
+            alt="Bole Sub City emblem"
+            className="mb-5 h-16 w-16 rounded-full border-2 border-accent/30 bg-white/10 shadow-lg sm:h-20 sm:w-20"
+          />
+          <p className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs font-medium tracking-wide">
             Official service desk · Information Technology Directorate
           </p>
           <h1 className="mt-5 max-w-3xl font-display text-4xl font-bold leading-tight sm:text-5xl">
