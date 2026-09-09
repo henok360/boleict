@@ -104,6 +104,11 @@ function Home() {
       <header className="sticky top-0 z-10 border-b border-white/10 bg-surface-header text-primary-foreground shadow-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5">
           <div className="flex items-center gap-3">
+            <img
+              src={logoAsset.url}
+              alt="Bole Sub City emblem"
+              className="h-10 w-auto rounded-full border border-white/20 bg-white/10 shadow-sm"
+            />
             <div>
               <p className="font-display text-base font-semibold leading-tight">ቦሌ ክፍለ ከተማ አስተዳደር</p>
               <p className="text-xs opacity-80">Work Flow Management System</p>
