@@ -14,7 +14,7 @@ import {
   BarChart3,
 } from "lucide-react";
 import { Button, Card } from "@/components/ui-kit";
-import logoAsset from "@/assets/bole-logo.png.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -104,11 +104,6 @@ function Home() {
       <header className="sticky top-0 z-10 border-b border-white/10 bg-surface-header text-primary-foreground shadow-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5">
           <div className="flex items-center gap-3">
-            <img
-              src={logoAsset.url}
-              alt="Bole Sub City Administration logo"
-              className="h-11 w-11 rounded-full bg-white object-cover shadow-sm ring-2 ring-accent/60"
-            />
             <div>
               <p className="font-display text-base font-semibold leading-tight">ቦሌ ክፍለ ከተማ አስተዳደር</p>
               <p className="text-xs opacity-80">Work Flow Management System</p>
@@ -135,11 +130,6 @@ function Home() {
           }}
         />
         <div className="relative mx-auto max-w-6xl px-4 py-20 sm:py-24">
-          <img
-            src={logoAsset.url}
-            alt="Bole Sub City Administration emblem"
-            className="h-24 w-24 rounded-full bg-white object-cover shadow-lg ring-4 ring-accent/50 sm:h-28 sm:w-28"
-          />
           <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs font-medium tracking-wide">
             <Building2 className="h-3.5 w-3.5 text-accent" />
             Official service desk · Information Technology Directorate

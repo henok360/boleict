@@ -4,7 +4,7 @@ import { useEffect, type ReactNode } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useCurrentUser, ROLE_LABELS } from "@/hooks/useCurrentUser";
 import { Button } from "@/components/ui-kit";
-import logoAsset from "@/assets/bole-logo.png.asset.json";
+
 import { cn } from "@/lib/utils";
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -62,11 +62,6 @@ export function AppShell({ children }: { children: ReactNode }) {
       <header className="bg-surface-header text-primary-foreground">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3">
           <Link to="/dashboard" className="flex items-center gap-3">
-            <img
-              src={logoAsset.url}
-              alt="Bole Sub City Administration logo"
-              className="h-10 w-10 rounded-full bg-white object-cover shadow-sm ring-2 ring-accent/60"
-            />
             <span>
               <span className="block font-display text-base font-semibold leading-tight">
                 Bole Sub City
