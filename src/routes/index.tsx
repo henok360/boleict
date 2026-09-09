@@ -9,11 +9,11 @@ import {
   History,
   Users,
   ArrowRight,
-  Building2,
   Clock3,
   BarChart3,
 } from "lucide-react";
 import { Button, Card } from "@/components/ui-kit";
+import logoAsset from "@/assets/bole-logo.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
