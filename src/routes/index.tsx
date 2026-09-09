@@ -145,7 +145,7 @@ function Home() {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link to="/auth">
-              <Button variant="accent" size="lg">
+              <Button variant="accent" size="md">
                 Submit a request
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -153,7 +153,7 @@ function Home() {
             <Link to="/auth">
               <Button
                 variant="outline"
-                size="lg"
+                size="md"
                 className="border-white/30 bg-transparent text-primary-foreground hover:bg-white/10 hover:text-primary-foreground"
               >
                 Track my requests
@@ -243,7 +243,7 @@ function Home() {
             Sign in with your staff account to submit a request and follow it through to completion.
           </p>
           <Link to="/auth">
-            <Button variant="accent" size="lg" className="mt-6">
+            <Button variant="accent" size="md" className="mt-6">
               Go to sign in
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
