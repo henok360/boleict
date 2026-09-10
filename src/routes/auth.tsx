@@ -148,8 +148,8 @@ function AuthPage() {
               </Button>
             </form>
           ) : (
-            <form onSubmit={signUp} className="space-y-4">
-              <div className="grid gap-4 sm:grid-cols-2">
+            <form onSubmit={signUp} className="space-y-3">
+              <div className="grid gap-3 sm:grid-cols-2">
                 <div>
                   <Label htmlFor="fn">Full name</Label>
                   <Input id="fn" value={form.fullName} onChange={set("fullName")} required />
@@ -216,7 +216,7 @@ function AuthPage() {
             </form>
           )}
         </Card>
-        <p className="mt-4 text-center text-sm text-muted-foreground">
+        <p className="mt-3 text-center text-sm text-muted-foreground">
           <Link to="/" className="underline">
             Back to home
           </Link>
