@@ -91,18 +91,9 @@ function AuthPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="bg-surface-header px-4 py-2 text-primary-foreground">
-        <div className="mx-auto flex max-w-6xl items-center gap-3">
-          <div>
-            <p className="font-display text-sm font-semibold leading-tight">Bole Sub City</p>
-            <p className="text-[11px] opacity-80">Work Flow Management System</p>
-          </div>
-        </div>
-      </header>
-
-      <div className="mx-auto max-w-md px-4 py-6">
-        <Card className="p-4">
+    <div className="min-h-screen bg-auth-bg">
+      <div className="mx-auto max-w-md px-4 py-2">
+        <Card className="p-3">
           <div className="mb-4 flex rounded-md bg-muted p-1">
             {(["signin", "signup"] as const).map((m) => (
               <button
