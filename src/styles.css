@@ -63,6 +63,7 @@
   --color-warning: var(--warning);
   --color-info: var(--info);
   --color-surface-header: var(--surface-header);
+  --color-auth-bg: var(--auth-bg);
   --font-sans:
     "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Bitter", Georgia, serif;
@@ -94,6 +95,7 @@
   --warning: oklch(0.75 0.14 75);
   --info: oklch(0.55 0.11 240);
   --surface-header: oklch(0.32 0.06 158);
+  --auth-bg: oklch(0.97 0.02 95);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -130,6 +132,7 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.551 0.027 264.364);
+  --auth-bg: oklch(0.22 0.03 264.5);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);

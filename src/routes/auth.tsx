@@ -91,19 +91,10 @@ function AuthPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="bg-surface-header px-4 py-2 text-primary-foreground">
-        <div className="mx-auto flex max-w-6xl items-center gap-3">
-          <div>
-            <p className="font-display text-sm font-semibold leading-tight">Bole Sub City</p>
-            <p className="text-[11px] opacity-80">Work Flow Management System</p>
-          </div>
-        </div>
-      </header>
-
-      <div className="mx-auto max-w-md px-4 py-6">
-        <Card className="p-4">
-          <div className="mb-4 flex rounded-md bg-muted p-1">
+    <div className="min-h-screen bg-auth-bg">
+      <div className="mx-auto max-w-md px-4 py-2">
+        <Card className="p-3">
+          <div className="mb-3 flex rounded-md bg-muted p-1">
             {(["signin", "signup"] as const).map((m) => (
               <button
                 key={m}
@@ -121,13 +112,13 @@ function AuthPage() {
           </div>
 
           {error ? (
-            <div className="mb-3">
+            <div className="mb-2">
               <Alert>{error}</Alert>
             </div>
           ) : null}
 
           {mode === "signin" ? (
-            <form onSubmit={signIn} className="space-y-3">
+            <form onSubmit={signIn} className="space-y-2">
               <div>
                 <Label htmlFor="u">Username</Label>
                 <Input id="u" value={form.username} onChange={set("username")} required autoComplete="username" />
@@ -148,8 +139,8 @@ function AuthPage() {
               </Button>
             </form>
           ) : (
-            <form onSubmit={signUp} className="space-y-3">
-              <div className="grid gap-3 sm:grid-cols-2">
+            <form onSubmit={signUp} className="space-y-2">
+              <div className="grid gap-2 sm:grid-cols-2">
                 <div>
                   <Label htmlFor="fn">Full name</Label>
                   <Input id="fn" value={form.fullName} onChange={set("fullName")} required />
@@ -216,7 +207,7 @@ function AuthPage() {
             </form>
           )}
         </Card>
-        <p className="mt-3 text-center text-sm text-muted-foreground">
+        <p className="mt-2 text-center text-sm text-muted-foreground">
           <Link to="/" className="underline">
             Back to home
           </Link>
