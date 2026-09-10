@@ -207,7 +207,7 @@ function AuthPage() {
             </form>
           )}
         </Card>
-        <p className="mt-3 text-center text-sm text-muted-foreground">
+        <p className="mt-2 text-center text-sm text-muted-foreground">
           <Link to="/" className="underline">
             Back to home
           </Link>
