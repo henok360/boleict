@@ -94,7 +94,7 @@ function AuthPage() {
     <div className="min-h-screen bg-auth-bg">
       <div className="mx-auto max-w-md px-4 py-2">
         <Card className="p-3">
-          <div className="mb-4 flex rounded-md bg-muted p-1">
+          <div className="mb-3 flex rounded-md bg-muted p-1">
             {(["signin", "signup"] as const).map((m) => (
               <button
                 key={m}
@@ -112,13 +112,13 @@ function AuthPage() {
           </div>
 
           {error ? (
-            <div className="mb-3">
+            <div className="mb-2">
               <Alert>{error}</Alert>
             </div>
           ) : null}
 
           {mode === "signin" ? (
-            <form onSubmit={signIn} className="space-y-3">
+            <form onSubmit={signIn} className="space-y-2">
               <div>
                 <Label htmlFor="u">Username</Label>
                 <Input id="u" value={form.username} onChange={set("username")} required autoComplete="username" />
