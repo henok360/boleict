@@ -16,6 +16,8 @@ import {
   StatusBadge,
   Textarea,
 } from "@/components/ui-kit";
+import { StarRating } from "@/components/StarRating";
+
 
 export const Route = createFileRoute("/_authenticated/tickets/$id")({
   head: () => ({
@@ -38,6 +40,8 @@ function TicketDetail() {
   const [comment, setComment] = useState("");
   const [engineerId, setEngineerId] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [rating, setRating] = useState(5);
+
 
   const { data: ticket, refetch } = useQuery({
     queryKey: ["ticket", id],
@@ -288,7 +292,7 @@ function TicketDetail() {
                   onClick={async () =>
                     update({ status: "in_progress" }, "User reported the issue is not yet resolved.", [
                       ticket!.assigned_to,
-                      ...(await leaderIdsPromise())),
+                      ...(await leaderIdsPromise()),
                     ])
                   }
                 >
