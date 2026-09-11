@@ -135,11 +135,6 @@ function Home() {
           }}
         />
         <div className="relative mx-auto max-w-6xl px-4 py-20 sm:py-24">
-          <img
-            src={logoAsset.url}
-            alt="Bole Sub City emblem"
-            className="mb-5 h-16 w-16 rounded-full border-2 border-accent/30 bg-white/10 shadow-lg sm:h-20 sm:w-20"
-          />
           <p className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs font-medium tracking-wide">
             Official service desk · Information Technology Directorate
           </p>
