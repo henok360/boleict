@@ -255,31 +255,49 @@ function TicketDetail() {
           ) : null}
 
           {isOwner && ticket.status === "completed" ? (
-            <>
-              <Button
-                onClick={async () =>
-                  update(
-                    { status: "confirmed", confirmed_at: new Date().toISOString() },
-                    "User confirmed the work is complete. Ready for team leader closure.",
-                    [ticket!.assigned_to, ...(await leaderIdsPromise())],
-                  )
-                }
-              >
-                Confirm completion
-              </Button>
-              <Button
-                variant="outline"
-                onClick={async () =>
-                  update({ status: "in_progress" }, "User reported the issue is not yet resolved.", [
-                    ticket!.assigned_to,
-                    ...(await leaderIdsPromise()),
-                  ])
-                }
-              >
-                Not resolved yet
-              </Button>
-            </>
+            <div className="w-full space-y-3">
+              <div>
+                <Label>Rate the service you received (0 to 5 stars)</Label>
+                <div className="flex items-center gap-3">
+                  <StarRating value={rating} onChange={setRating} size="lg" />
+                  <span className="text-sm text-muted-foreground">
+                    {rating} star{rating === 1 ? "" : "s"}
+                  </span>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <Button
+                  onClick={async () =>
+                    update(
+                      {
+                        status: "confirmed",
+                        confirmed_at: new Date().toISOString(),
+                        rating,
+                        rated_at: new Date().toISOString(),
+                        rated_by: me!.id,
+                      } as Database["public"]["Tables"]["tickets"]["Update"],
+                      `User confirmed the work is complete and rated the service ${rating} out of 5 stars.`,
+                      [ticket!.assigned_to, ...(await leaderIdsPromise())],
+                    )
+                  }
+                >
+                  Confirm completion
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={async () =>
+                    update({ status: "in_progress" }, "User reported the issue is not yet resolved.", [
+                      ticket!.assigned_to,
+                      ...(await leaderIdsPromise())),
+                    ])
+                  }
+                >
+                  Not resolved yet
+                </Button>
+              </div>
+            </div>
           ) : null}
+
 
           {isLeader && ticket.status === "confirmed" ? (
             <Button
