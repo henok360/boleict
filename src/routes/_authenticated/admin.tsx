@@ -192,6 +192,9 @@ function Admin() {
           </table>
         </div>
       </Card>
+
+      <EngineerRatingsCard />
     </div>
+
   );
 }
