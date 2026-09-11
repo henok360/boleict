@@ -150,6 +150,10 @@ export type Database = {
           id: string
           location: string | null
           priority: string
+          rated_at: string | null
+          rated_by: string | null
+          rating: number | null
+          rating_comment: string | null
           reference: string
           status: Database["public"]["Enums"]["ticket_status"]
           title: string
@@ -169,6 +173,10 @@ export type Database = {
           id?: string
           location?: string | null
           priority?: string
+          rated_at?: string | null
+          rated_by?: string | null
+          rating?: number | null
+          rating_comment?: string | null
           reference?: string
           status?: Database["public"]["Enums"]["ticket_status"]
           title: string
@@ -188,6 +196,10 @@ export type Database = {
           id?: string
           location?: string | null
           priority?: string
+          rated_at?: string | null
+          rated_by?: string | null
+          rating?: number | null
+          rating_comment?: string | null
           reference?: string
           status?: Database["public"]["Enums"]["ticket_status"]
           title?: string
