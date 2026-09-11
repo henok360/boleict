@@ -34,7 +34,7 @@ export function useEngineerRatings() {
           const mine = rows.filter((r) => r.assigned_to === id && r.rating !== null);
           const total = mine.reduce((sum, r) => sum + (r.rating ?? 0), 0);
           const breakdown: Record<number, number> = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
-          mine.forEach((r) => (breakdown[r.rating as number] += 1));
+          mine.forEach((r) => (breakdown[r.rating as number] = (breakdown[r.rating as number] ?? 0) + 1));
           const profile = profiles?.find((p) => p.id === id);
           return {
             id,
@@ -58,7 +58,7 @@ export function EngineerRatingsCard({
 }: {
   title?: string;
   hint?: string;
-  onlyEngineerId?: string;
+  onlyEngineerId?: string | undefined;
 }) {
   const { data } = useEngineerRatings();
   const rows = (data ?? []).filter((r) => !onlyEngineerId || r.id === onlyEngineerId);
