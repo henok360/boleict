@@ -107,7 +107,7 @@ function Home() {
             <img
               src={logoAsset.url}
               alt="Bole Sub City emblem"
-              className="h-10 w-auto rounded-full border border-white/20 bg-white/10 shadow-sm"
+              className="h-20 w-auto rounded-full border border-white/20 bg-white/10 shadow-sm"
             />
             <div>
               <p className="font-display text-base font-semibold leading-tight">ቦሌ ክፍለ ከተማ አስተዳደር</p>
