@@ -87,12 +87,15 @@ function TicketDetail() {
   const isOwner = ticket!.created_by === me!.id;
   const isAssignee = ticket!.assigned_to === me!.id;
   const isLeader = me.role === "team_leader" || me.role === "super_admin";
+  const givenRating = (ticket as unknown as { rating: number | null }).rating ?? null;
 
   async function refreshAll() {
     await refetch();
     queryClient.invalidateQueries({ queryKey: ["ticket-events", id] });
     queryClient.invalidateQueries({ queryKey: ["tickets"] });
+    queryClient.invalidateQueries({ queryKey: ["engineer-ratings"] });
   }
+
 
   async function update(
     patch: Database["public"]["Tables"]["tickets"]["Update"],
@@ -182,6 +185,14 @@ function TicketDetail() {
             <dd>{nameOf(ticket.assigned_by)}</dd>
           </div>
         </dl>
+        {givenRating !== null ? (
+          <div className="mt-4 flex items-center gap-3 rounded-md bg-secondary px-3 py-2">
+            <span className="text-xs uppercase text-muted-foreground">User satisfaction</span>
+            <StarRating value={givenRating} size="sm" />
+            <span className="text-sm font-medium">{givenRating} / 5</span>
+          </div>
+        ) : null}
+
       </Card>
 
       {error ? <Alert>{error}</Alert> : null}
@@ -279,7 +290,7 @@ function TicketDetail() {
                         rating,
                         rated_at: new Date().toISOString(),
                         rated_by: me!.id,
-                      } as Database["public"]["Tables"]["tickets"]["Update"],
+                      } as unknown as Database["public"]["Tables"]["tickets"]["Update"],
                       `User confirmed the work is complete and rated the service ${rating} out of 5 stars.`,
                       [ticket!.assigned_to, ...(await leaderIdsPromise())],
                     )
