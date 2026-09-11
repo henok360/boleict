@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useCurrentUser, ROLE_LABELS } from "@/hooks/useCurrentUser";
 import { Button, Card, PriorityBadge, SectionTitle, Select, Stat, StatusBadge } from "@/components/ui-kit";
+import { EngineerRatingsCard } from "@/components/EngineerRatings";
+
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
@@ -176,6 +178,19 @@ function Dashboard() {
           </table>
         </div>
       </Card>
+
+      {me && me.role !== "user" ? (
+        <EngineerRatingsCard
+          title={me.role === "engineer" ? "My satisfaction ratings" : "IT engineer satisfaction ratings"}
+          hint={
+            me.role === "engineer"
+              ? "Stars staff users gave you when confirming your completed work."
+              : "Stars collected from staff users each time they confirm completed work."
+          }
+          onlyEngineerId={me.role === "engineer" ? me.id : undefined}
+        />
+      ) : null}
     </div>
+
   );
 }

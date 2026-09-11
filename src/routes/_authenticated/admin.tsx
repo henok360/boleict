@@ -10,6 +10,8 @@ import {
   updateAccessKeys,
 } from "@/lib/admin.functions";
 import { Alert, Button, Card, Input, Label, SectionTitle } from "@/components/ui-kit";
+import { EngineerRatingsCard } from "@/components/EngineerRatings";
+
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
@@ -190,6 +192,9 @@ function Admin() {
           </table>
         </div>
       </Card>
+
+      <EngineerRatingsCard />
     </div>
+
   );
 }
