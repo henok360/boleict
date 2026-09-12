@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
-import { fetchTeamLeaderIds, logEvent, notify } from "@/lib/tickets";
+import { fetchEngineerIds, fetchTeamLeaderIds, logEvent, notify } from "@/lib/tickets";
 import { Alert, Button, Card, Input, Label, SectionTitle, Select, Textarea } from "@/components/ui-kit";
 
 export const Route = createFileRoute("/_authenticated/tickets/new")({
