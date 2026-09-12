@@ -4,6 +4,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { fetchEngineerIds, fetchTeamLeaderIds, logEvent, notify } from "@/lib/tickets";
+import { CATEGORY_LABELS } from "@/lib/services";
 import { Alert, Button, Card, Input, Label, SectionTitle, Select, Textarea } from "@/components/ui-kit";
 
 export const Route = createFileRoute("/_authenticated/tickets/new")({
@@ -32,7 +33,7 @@ function NewTicket() {
   const [form, setForm] = useState({
     title: "",
     description: "",
-    category: "hardware",
+    category: "A",
     priority: "medium",
     location: "",
   });
@@ -91,13 +92,12 @@ function NewTicket() {
           <div className="grid gap-4 sm:grid-cols-3">
             <div>
               <Label htmlFor="c">Category</Label>
-              <Select id="c" value={form.category} onChange={set("category")}>
-                <option value="hardware">Hardware</option>
-                <option value="software">Software</option>
-                <option value="network">Network / internet</option>
-                <option value="account">Account / access</option>
-                <option value="printer">Printer</option>
-                <option value="general">Other</option>
+              <Select id="c" value={form.category} onChange={set("category")} required>
+                {Object.entries(CATEGORY_LABELS).map(([key, label]) => (
+                  <option key={key} value={key}>
+                    {label}
+                  </option>
+                ))}
               </Select>
             </div>
             <div>
