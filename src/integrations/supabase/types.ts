@@ -100,6 +100,54 @@ export type Database = {
         }
         Relationships: []
       }
+      service_items: {
+        Row: {
+          active: boolean
+          category: string
+          category_name: string
+          code: string
+          created_at: string
+          default_price: number
+          id: string
+          name_am: string | null
+          name_en: string
+          scope_en: string | null
+          sort_order: number
+          uom: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          category: string
+          category_name: string
+          code: string
+          created_at?: string
+          default_price?: number
+          id?: string
+          name_am?: string | null
+          name_en: string
+          scope_en?: string | null
+          sort_order?: number
+          uom?: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          category?: string
+          category_name?: string
+          code?: string
+          created_at?: string
+          default_price?: number
+          id?: string
+          name_am?: string | null
+          name_en?: string
+          scope_en?: string | null
+          sort_order?: number
+          uom?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       ticket_events: {
         Row: {
           author_id: string | null
@@ -149,12 +197,16 @@ export type Database = {
           description: string
           id: string
           location: string | null
+          price_locked_at: string | null
           priority: string
           rated_at: string | null
           rated_by: string | null
           rating: number | null
           rating_comment: string | null
           reference: string
+          service_item_id: string | null
+          service_price: number | null
+          service_qty: number
           status: Database["public"]["Enums"]["ticket_status"]
           title: string
           updated_at: string
@@ -172,12 +224,16 @@ export type Database = {
           description: string
           id?: string
           location?: string | null
+          price_locked_at?: string | null
           priority?: string
           rated_at?: string | null
           rated_by?: string | null
           rating?: number | null
           rating_comment?: string | null
           reference?: string
+          service_item_id?: string | null
+          service_price?: number | null
+          service_qty?: number
           status?: Database["public"]["Enums"]["ticket_status"]
           title: string
           updated_at?: string
@@ -195,17 +251,29 @@ export type Database = {
           description?: string
           id?: string
           location?: string | null
+          price_locked_at?: string | null
           priority?: string
           rated_at?: string | null
           rated_by?: string | null
           rating?: number | null
           rating_comment?: string | null
           reference?: string
+          service_item_id?: string | null
+          service_price?: number | null
+          service_qty?: number
           status?: Database["public"]["Enums"]["ticket_status"]
           title?: string
           updated_at?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "tickets_service_item_id_fkey"
+            columns: ["service_item_id"]
+            isOneToOne: false
+            referencedRelation: "service_items"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {
