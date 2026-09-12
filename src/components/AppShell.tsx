@@ -54,6 +54,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     { to: "/dashboard", label: "Dashboard" },
     { to: "/tickets/new", label: "New request" },
     { to: "/notifications", label: `Notifications${unread ? ` (${unread})` : ""}` },
+    { to: "/settings", label: "Profile settings" },
   ];
   if (me?.role === "super_admin") links.push({ to: "/admin", label: "Administration" });
 
