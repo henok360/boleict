@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
-import { fetchTeamLeaderIds, logEvent, notify } from "@/lib/tickets";
+import { fetchEngineerIds, fetchTeamLeaderIds, logEvent, notify } from "@/lib/tickets";
 import { Alert, Button, Card, Input, Label, SectionTitle, Select, Textarea } from "@/components/ui-kit";
 
 export const Route = createFileRoute("/_authenticated/tickets/new")({
@@ -56,8 +56,13 @@ function NewTicket() {
       return;
     }
     await logEvent(data.id, me.id, "Request submitted for team leader review.", "status");
-    const leaders = await fetchTeamLeaderIds();
+    const [leaders, engineers] = await Promise.all([fetchTeamLeaderIds(), fetchEngineerIds()]);
     await notify(leaders, data.id, `New request ${data.reference} awaiting your review.`);
+    await notify(
+      engineers,
+      data.id,
+      `New request ${data.reference}: "${form.title}" was submitted and is awaiting assignment.`,
+    );
     queryClient.invalidateQueries({ queryKey: ["tickets"] });
     setBusy(false);
     navigate({ to: "/tickets/$id", params: { id: data.id } });

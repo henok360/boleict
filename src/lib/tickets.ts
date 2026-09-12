@@ -30,3 +30,8 @@ export async function fetchTeamLeaderIds() {
   const { data } = await supabase.from("user_roles").select("user_id").eq("role", "team_leader");
   return (data ?? []).map((r) => r.user_id);
 }
+
+export async function fetchEngineerIds() {
+  const { data } = await supabase.from("user_roles").select("user_id").eq("role", "engineer");
+  return (data ?? []).map((r) => r.user_id);
+}
